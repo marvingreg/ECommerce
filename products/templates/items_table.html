@@ -1,0 +1,26 @@
+<div class="shadow p-lg-1 mb-5 bg-white rounded">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col"></th>
+                    <th class="text-center" scope="col">Item Name</th>
+                    <th class="text-center" scope="col">Item Price</th>
+                    <th class="text-center" scope="col">Quantity</th>
+                    <th class="text-center" scope="col">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for item in items%}
+                <tr class="">
+                    <td class="text-center"><img src="{{item.product.imageURL}}" alt=""  height="60px" width="60px"></td>
+                    <td class="text-center">{{item.product.name}}</td>
+                    <td class="text-center">${{item.product.price|floatformat:2}}</td>
+                    <td class="text-center">{{item.quantity}}</td>
+                    <td class="text-center">${{item.get_total|floatformat:2}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>

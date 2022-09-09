@@ -21,9 +21,15 @@ def cart(request):
     else:
         items = []
 
-    print(order)
+
     context ={
         'items': items,
         'order': order
     }
+    
     return render(request,'cart.html',context)
+
+
+def checkout(request):
+
+    return render(request,'checkout.html',{})

@@ -3,7 +3,7 @@
 {%load static%}
 {%for product in products%}
 <div class="card" style="width: 18rem; display: inline-block; margin: 2rem 5px; box-shadow: inset;">
-    <img class="card-img-top" src="{%static 'images/image-placeholder.jpg' %}" width="200px" height="200px" alt="Card image cap">
+    <img class="card-img-top" src="{{product.imageURL}}" width="260px" height="250px" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{product.name}}</h5>
       <h5 class="card-title">${{product.price}}</h5>
