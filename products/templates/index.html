@@ -15,8 +15,12 @@
     {%include 'navbar.html'%}
 
     <div class="col-sm-10 my-auto" style="margin: 9vw ;" >
-      {%include 'items.html'%}
+      {%block items%}
+      {%endblock%}
     </div>
+
+    {%block content%}
+    {%endblock%}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
