@@ -1,65 +1,15 @@
 {%extends 'index.html'%}
 {%block items%}
 {%load static%}
-
+{%for product in products%}
 <div class="card" style="width: 18rem; display: inline-block; margin: 2rem 5px; box-shadow: inset;">
     <img class="card-img-top" src="{%static 'images/image-placeholder.jpg' %}" width="200px" height="200px" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Head Phones</h5>
-      <h5 class="card-title">$50</h5>
+      <h5 class="card-title">{{product.name}}</h5>
+      <h5 class="card-title">${{product.price}}</h5>
         <a href="#" class="btn btn-outline-success" style="margin-right: 5px ; display: inline-block;">Add to Cart</a>
         <a href="#" class="btn btn-outline-info" style="margin-right: 5px ; display: inline-block;">View Item</a>
     </div>
 </div>
-
-<div class="card" style="width: 18rem; display: inline-block; margin: 2rem 5px; ">
-  <img class="card-img-top" src="{%static 'images/image-placeholder.jpg' %}" width="200px" height="200px" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Head Phones</h5>
-    <h5 class="card-title">$50</h5>
-      <a href="#" class="btn btn-outline-success" style="margin-right: 5px ; display: inline-block;">Add to Cart</a>
-      <a href="#" class="btn btn-outline-info" style="margin-right: 5px ; display: inline-block;">View Item</a>
-  </div>
-</div>
-
-<div class="card" style="width: 18rem; display: inline-block; margin: 2rem 5px; ">
-  <img class="card-img-top" src="{%static 'images/image-placeholder.jpg' %}" width="200px" height="200px" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Head Phones</h5>
-    <h5 class="card-title">$50</h5>
-      <a href="#" class="btn btn-outline-success" style="margin-right: 5px ; display: inline-block;">Add to Cart</a>
-      <a href="#" class="btn btn-outline-info" style="margin-right: 5px ; display: inline-block;">View Item</a>
-  </div>
-</div>
-
-<div class="card" style="width: 18rem; display: inline-block; margin: 2rem 5px; ">
-  <img class="card-img-top" src="{%static 'images/image-placeholder.jpg' %}" width="200px" height="200px" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Head Phones</h5>
-    <h5 class="card-title">$50</h5>
-      <a href="#" class="btn btn-outline-success" style="margin-right: 5px ; display: inline-block;">Add to Cart</a>
-      <a href="#" class="btn btn-outline-info" style="margin-right: 5px ; display: inline-block;">View Item</a>
-  </div>
-</div>
-
-<div class="card" style="width: 18rem; display: inline-block; margin: 2rem 5px; ">
-  <img class="card-img-top" src="{%static 'images/image-placeholder.jpg' %}" width="200px" height="200px" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Head Phones</h5>
-    <h5 class="card-title">$50</h5>
-      <a href="#" class="btn btn-outline-success" style="margin-right: 5px ; display: inline-block;">Add to Cart</a>
-      <a href="#" class="btn btn-outline-info" style="margin-right: 5px ; display: inline-block;">View Item</a>
-  </div>
-</div>
-
-<div class="card" style="width: 18rem; display: inline-block; margin: 2rem 5px; ">
-  <img class="card-img-top" src="{%static 'images/image-placeholder.jpg' %}" width="200px" height="200px" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Head Phones</h5>
-    <h5 class="card-title">$50</h5>
-      <a href="#" class="btn btn-outline-success" style="margin-right: 5px ; display: inline-block;">Add to Cart</a>
-      <a href="#" class="btn btn-outline-info" style="margin-right: 5px ; display: inline-block;">View Item</a>
-  </div>
-</div>
-
+{%endfor%}
 {%endblock%}

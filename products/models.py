@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 
 class Customer(models.Model):
     customer = models.OneToOneField(User,on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=200, null=True)
+    last_name = models.CharField(max_length=200, null=True)
+    email = models.EmailField(max_length=200,null=True,default="")
     
 
 class Product(models.Model):
@@ -19,11 +22,28 @@ class Order(models.Model):
     complete = models.BooleanField(default=False, null=True,blank=False)
     transaction_id = models.CharField(max_length=100)
 
+    @property
+    def get_price_total(self):
+        order_items = self.orderitem_set.all()
+
+        return sum([item.get_total for item in order_items])
+
+
+    @property
+    def get_item_total(self):
+        order_items = self.orderitem_set.all()
+        
+        return sum([item.quantity for item in order_items])
+
 class OrderItem(models.Model):
     product = models.ForeignKey(Product,on_delete=models.SET_NULL, null=True, blank=True)
     order = models.ForeignKey(Order,on_delete=models.SET_NULL , null=True, blank=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def get_total(self):
+        return self.product.price * self.quantity
 
 
 class ShippingAddress(models.Model):

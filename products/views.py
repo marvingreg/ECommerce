@@ -1,12 +1,29 @@
-from http.client import HTTPResponse
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import *
 
 # Create your views here.
 
 def index(request):
-    return render(request,'items.html',{})
+
+    context ={
+        'products': Product.objects.all
+    }
+
+    return render(request,'items.html',context)
 
 
 def cart(request):
-    return render(request,'cart.html',{})
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete = False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+
+    print(order)
+    context ={
+        'items': items,
+        'order': order
+    }
+    return render(request,'cart.html',context)
