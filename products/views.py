@@ -14,6 +14,8 @@ def index(request):
 
 def cart(request):
 
+    order = ''
+    items = ''
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete = False)
@@ -32,4 +34,19 @@ def cart(request):
 
 def checkout(request):
 
-    return render(request,'checkout.html',{})
+    order = ''
+    items = ''
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete = False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+
+
+    context ={
+        'items': items,
+        'order': order
+    }
+    
+    return render(request,'checkout.html',context)
